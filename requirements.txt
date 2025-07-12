@@ -1,1 +1,5 @@
 fastapi[standard]==0.113.0
+asyncpg
+python-dotenv
+pyjwt
+'passlib[bcrypt]'
