@@ -1,6 +1,7 @@
 from pydantic import BaseModel, EmailStr, Field
 from typing import Annotated
-#from enum import Enum
+from uuid import UUID
+from enum import Enum
 
 
 class UserBaseModel(BaseModel):
@@ -36,7 +37,7 @@ class Token(BaseModel):
 
 
 class TokenData(BaseModel):
-    user_id: str
+    user_id: int
     name: str 
 
 
@@ -47,3 +48,54 @@ class LoginData(BaseModel):#unused
 
 class UserInDB(UserModel):
     password: str
+
+
+#test-case models
+class Priority(Enum):
+    CRITICAL = 'CRITICAL'
+    HIGH = 'HIGH'
+    MEDIUM = 'MEDIUM'
+    LOW = 'LOW'
+
+    @classmethod
+    def list_priorities(cls):
+        return [i for i in cls] 
+    
+
+class StepBaseModel(BaseModel):
+    description: str 
+    expected_result: str | None=None
+
+
+class Step(StepBaseModel):
+    step_id: UUID
+        
+
+class StepCreateModel(StepBaseModel):
+    next_step_id: UUID | None=None 
+    prev_step_id: UUID | None=None 
+
+
+class StepUpdateModel(StepCreateModel):
+    description: str | None=None
+
+
+class TCCreateModel(BaseModel):
+    name: str 
+    description: str 
+    pre_conditions: str | None = Field(None, alias='pre-conditions')
+    project_id: UUID
+    priority: Priority = Priority.MEDIUM
+
+
+class TCUpdateModel(BaseModel):
+    name: str | None = None
+    description: str | None = None 
+    pre_conditions: str | None = Field(None, alias='pre-conditions')
+    project_id: UUID | None = None
+    priority: Priority | None = None
+
+
+class TCListMember(BaseModel):
+    name: str
+    priority: Priority

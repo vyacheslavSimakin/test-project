@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 
 from app.routers.users import users_router
-#from routers.tc_router import tc_router
+#from routers.tcte import tc_router
+from app.routers.tc_router import tc_router
 from app.routers.login import login_router
 
 from contextlib import asynccontextmanager
@@ -20,6 +21,7 @@ app = FastAPI(lifespan=lifespan)
 
 app.include_router(users_router)
 app.include_router(login_router)
+app.include_router(tc_router)
 
 @app.get('/testing')
 def reqtest():
