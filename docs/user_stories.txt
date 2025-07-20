@@ -1,0 +1,37 @@
+# to do brief description, acceptance criterias
+
+As a user, I want to be able to log in to the app, to be able to use it.
+As a user, I want to be able to read my personal data.
+As a user, I want to be able to change my personal data.
+As a user, I want to be able to change my current password, so that I can maintain my account's security.
+As a user, I want to be able to reset a forgotten password, so that I can regain access to my account.
+
+As a manager, I want to be able to create new user, to collaborate as a team.
+As a manager, I want to be able to read a list of users, to be able to keep track of testers.
+As a manager, I want to be able to edit a user info of any user, to be able to control user data.
+As a manager, I want to be able to delete users, to be able to remove not involved testers.
+
+As a user, I want to be able to create test case with a title, description, test steps, and preconditions, so that I can clearly define a scenario to be tested.
+As a user, I want to be able to read stored test case, to be able to check single case.
+As a user, I want to be able to read a list of existing test cases, to be able to keep track of created cases.
+As a user, I want to be able to edit stored test cases, to be able to adapt to changes.
+As a user, I want to be able to delete stored test cases, to be able to clean up outdated test cases.
+As a user, I want to be able to set priority to test cases, to be able to know, which cases should be executed first.
+
+As a user, I want to be able to add steps to test cases in any position of already existing test case steps.
+As a user, I want to edit the content of a test step, so that I can correct or update the instructions.
+As a user, I want to reorder the steps within a test case, so that the test flow is logical and accurate.
+As a user, I want to be able to delete steps, to be able to remove unneeded steps.
+
+As a tester, I want to be able to execute a test case and mark it as 'Passed', 'Failed', 'Untested' or 'Blocked', so that I can record the outcome of the test.
+As a tester, I want to be able to record actual results for each step during execution, so I can provide detailed feedback.
+As a tester, I want to be able to attach screenshots or log files to a failed test result, so that developers have clear evidence of the issue.
+As a tester, I want to be able to see, how long does it takes to execute a test case, to be able to share metrics with management.
+
+As a test manager, I want to group test cases into a 'Test Suite', so that I can organize tests for a specific feature or release.
+As a test manager, I want to assign test cases to specific users, so that the team knows who is responsible for what.
+As a manager, I want to view a dashboard with key metrics, such as the overall pass/fail rate, so that I can quickly assess the status of the project.
+As a manager, I want to generate a report of test execution results, so that I can share the testing progress with stakeholders.
+
+
+
