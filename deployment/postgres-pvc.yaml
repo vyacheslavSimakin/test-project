@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: tms-pv-claim
+  namespace: tms-project-stage
+spec:
+  storageClassName: hcloud-volumes
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi

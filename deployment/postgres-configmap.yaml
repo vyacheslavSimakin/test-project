@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-secret
+  namespace: tms-project-stage
+data:
+  POSTGRES_DB: ps
+  POSTGRES_USER: ps
+  POSTGRES_PASSWORD: Secu #move to secret
