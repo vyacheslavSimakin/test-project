@@ -15,6 +15,11 @@ class UserCreateModel(UserBaseModel):
     password: str
 
 
+class UserFullModel(UserBaseModel):
+    user_id: int
+    email: EmailStr
+
+
 class UserModel(UserBaseModel):
     user_id: int#UUID
 
@@ -22,7 +27,7 @@ class UserModel(UserBaseModel):
 class UserUpdateModel(BaseModel):
     first_name: Annotated[str | None, Field(min_length=2, max_length=50, examples=["Bob"], default=None)]
     last_name: Annotated[str | None, Field(min_length=2, max_length=50, examples=["Beebop"], default=None)]
-    email: Annotated[EmailStr | None, Field(min_length=5, max_length=255, examples=["bob@mail.com"], default=None)]
+
     role: str | None = None
 
 
@@ -63,7 +68,7 @@ class Priority(Enum):
     
 
 class StepBaseModel(BaseModel):
-    description: str 
+    description: str | None = None
     expected_result: str | None=None
 
 
@@ -92,10 +97,10 @@ class TCUpdateModel(BaseModel):
     name: str | None = None
     description: str | None = None 
     pre_conditions: str | None = Field(None, alias='pre-conditions')
-    project_id: UUID | None = None
     priority: Priority | None = None
 
 
 class TCListMember(BaseModel):
+    test_case_id: UUID
     name: str
     priority: Priority

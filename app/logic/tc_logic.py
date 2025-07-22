@@ -8,7 +8,7 @@ from app.models import Step, TCCreateModel, TCUpdateModel, TCListMember
 #to do get list of steps
 class TCBase(TCCreateModel):
     steps: dict[int, Step] | None = None 
-    test_case_id: UUID = uuid4() 
+    test_case_id: UUID = Field(default_factory=uuid4) 
     created_by: int | None = None
 
 
@@ -96,7 +96,9 @@ class TCBase(TCCreateModel):
         if not await TCBase.check_tc_in_db(test_case_id, connection):
             raise ValueError
 
+        
         body = body.model_dump(exclude_unset=True)
+        body['priority'] = body['priority'].value 
         r = ', '.join(f'{key}=${i}' for i, key in enumerate(body.keys(), 1))
         q = f'UPDATE test_cases SET {r} WHERE test_case_id=${len(body)+1}'
         await connection.execute(q, *body.values(), test_case_id)
@@ -121,6 +123,7 @@ class TCBase(TCCreateModel):
             
 
 async def get_list_of_tc_from_db(connection: Connection) -> list[TCListMember]:
-    response = await connection.fetch('SELECT name, priority FROM test_cases')
+    response = await connection.fetch('''SELECT test_case_id, name, 
+                                      priority FROM test_cases''')
     response = [TCListMember(**tc) for tc in response]
     return response
